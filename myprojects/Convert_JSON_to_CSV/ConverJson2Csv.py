@@ -1,0 +1,29 @@
+import json
+import csv
+# json to dict
+# if __name__ == '__main__':
+#     try:
+#         with open('input.json','r') as f:
+#             json_str = json.loads(f.read())
+#         print(*json_str)
+#         print(json_str[0])
+#         output = ','.join([*json_str[0]])
+#         with open('output.csv','w') as fw:
+#             fw.write(output)
+#
+#     except Exception as ex:
+#         print(f'ERRO:{str(ex)}')
+
+if __name__ == '__main__':
+    try:
+        with open('input.json', 'r') as f:
+            data = json.loads(f.read())
+
+        output = ','.join([*data[0]])
+        for obj in data:
+            output += f'\n{obj["Name"]},{obj["age"]},{obj["birthyear"]}'
+
+        with open('output.csv','w') as fw:
+            fw.write(output)
+    except Exception as ex:
+        print(f'ERRO:{str(ex)}')
